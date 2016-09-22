@@ -1,8 +1,9 @@
-﻿
-Shader "anna/TransTop" {
+﻿// See ColorTop. Opaque to Transparent gradient to bottom (or any direction)
+
+Shader ".AnTi/Transparency/Trans Top" {
 
 	Properties {
-		_Multi("Intensity", Range(-0.5,1.5)) = 0.5
+		_Multi("Intensity", Range(-0.5,1.5)) = 0.5 // different range to ColorTop works better
 	}
 
 	SubShader {
@@ -13,8 +14,7 @@ Shader "anna/TransTop" {
 			Blend SrcAlpha OneMinusSrcAlpha
 			CGPROGRAM
 			#pragma vertex vert
-			#pragma fragment frag
-			
+			#pragma fragment frag			
 
 			#include "UnityCG.cginc"
 
@@ -30,19 +30,19 @@ Shader "anna/TransTop" {
 
 			fixed _Multi;
 
-			v2f vert(appdata v) {
-				v2f outp;
-				outp.vertex = UnityObjectToClipPos(v.vertex);
+			v2f vert(appdata inV) {
+				v2f outF;
+				outF.vertex = UnityObjectToClipPos(inV.vertex);
 
-				half3 worldNormal = UnityObjectToWorldNormal(v.normal);
-				fixed alpha = worldNormal.y * 0.5 + _Multi;
-				outp.normalColor = saturate(fixed4(1, 1, 1, alpha));
+				half3 worldNormal = UnityObjectToWorldNormal(inV.normal);
+				fixed alpha = worldNormal.y * 0.5 + _Multi; // also diff from ColorTop
+				outF.normalColor = saturate(fixed4(1, 1, 1, alpha));
 
-				return outp;
+				return outF;
 			}
 
-			fixed4 frag(v2f inp) : SV_Target {
-				fixed4 col = inp.normalColor;
+			fixed4 frag(v2f inF) : SV_Target {
+				fixed4 col = inF.normalColor;
 				return col;
 			}
 

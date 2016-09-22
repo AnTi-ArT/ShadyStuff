@@ -1,16 +1,16 @@
-﻿Shader "anna/LambertBasic"
-{
-	Properties
-	{
-		_Color ("Color", Color) = (1, 1, 1, 1)
+﻿// Basic Lambert shading
+
+Shader ".AnTi/Shading/Lambert Basic" {
+
+	Properties {
+		_Color ("Object Color", Color) = (1, 1, 1, 1)
 	}
-	SubShader
-	{
+
+	SubShader {
 		Tags { "RenderType"="Opaque" }
 		LOD 100
 
-		Pass
-		{
+		Pass {
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -18,34 +18,32 @@
 			#include "UnityCG.cginc"
 			#include "UnityLightingCommon.cginc"
 
-			struct appdata
-			{
+			struct appdata {
 				float4 vertex : POSITION;
 				float3 normal : NORMAL;
 			};
 
-			struct v2f
-			{
-				fixed4 DiffuseLight : COLOR0;
+			struct v2f {
+				fixed4 diffuseLight : COLOR0;
 				float4 vertex : SV_POSITION;
 			};
 
 			float4 _Color;
 			
-			v2f vert (appdata v)
-			{
-				v2f outp;
-				outp.vertex = UnityObjectToClipPos(v.vertex);
-				half3 worldNormal = UnityObjectToWorldNormal(v.normal);
-				half LightDotNormal = max(0.0, dot(worldNormal, _WorldSpaceLightPos0.xyz));
-				outp.DiffuseLight = LightDotNormal * _LightColor0;
-				return outp;
+			v2f vert (appdata inV) {
+				v2f outF;
+				outF.vertex = UnityObjectToClipPos(inV.vertex);
+
+				half3 worldNormal = UnityObjectToWorldNormal(inV.normal);
+				half lightDotNormal = max(0.0, dot(worldNormal, _WorldSpaceLightPos0.xyz));
+				outF.diffuseLight = lightDotNormal * _LightColor0;
+
+				return outF;
 			}
 			
-			fixed4 frag (v2f inp) : SV_Target
-			{
+			fixed4 frag (v2f inF) : SV_Target {
 				fixed4 col = _Color;
-				col *= inp.DiffuseLight;
+				col *= inF.diffuseLight;
 				return col;
 			}
 

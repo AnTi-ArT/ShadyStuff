@@ -18,8 +18,8 @@ Material:
     m_Floats:
     - first:
         name: _Multi
-      second: 0.32
+      second: 0.58
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.83785295, g: 0.7005, b: 0.934, a: 0.659}
+      second: {r: 0.22663236, g: 0.5907185, b: 0.934, a: 0.659}

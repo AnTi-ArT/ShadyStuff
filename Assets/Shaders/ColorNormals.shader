@@ -1,9 +1,11 @@
-﻿Shader "anna/ColourNormals" {
+﻿// Color according to objects normals
+
+Shader ".AnTi/Color/Color Normals" {
+
 	Properties {
 	}
 	
-	SubShader
-	{
+	SubShader {
 		Tags{ "RenderType" = "Opaque" }
 		LOD 100
 
@@ -26,20 +28,22 @@
 
 			float4 _Color;
 
-			v2f vert(appdata v) {
-				v2f outp;
-				outp.vertex = UnityObjectToClipPos(v.vertex);
+			v2f vert(appdata inV) {
+				v2f outF;
+				outF.vertex = UnityObjectToClipPos(inV.vertex);
 
-				half3 worldNormal = UnityObjectToWorldNormal(v.normal);
-				outp.normalColor = fixed4(worldNormal, 1) * 0.5 + 0.5;
+				half3 worldNormal = UnityObjectToWorldNormal(inV.normal);
+				//half3 worldNormal = inV.normal; // difference?
+				outF.normalColor = fixed4(worldNormal, 1) * 0.5 + 0.5;
 
-				return outp;
+				return outF;
 			}
 
-			fixed4 frag(v2f inp) : SV_Target {
-				fixed4 col = inp.normalColor;
+			fixed4 frag(v2f inF) : SV_Target {
+				fixed4 col = inF.normalColor;
 				return col;
 			}
+
 			ENDCG
 		}
 	}
