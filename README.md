@@ -1,0 +1,3 @@
+# Shady Stuff
+Nothing suspicious going on here, just my Unity shaders playground/backup...
+
