@@ -6,7 +6,7 @@ Shader ".AnTi/Color/Normals Local" {
 	}
 	
 	SubShader {
-		Tags{ "RenderType" = "Opaque" }
+		Tags{ "RenderType" = "Opaque" "DisableBatching" = "true"}
 		LOD 100
 
 		Pass {
