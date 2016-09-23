@@ -1,6 +1,6 @@
 ﻿// Colors the object from one direction (top), greyscale
 
-Shader ".AnTi/Color/Colour Top" {
+Shader ".AnTi/Color/Direction Top" {
 
 	Properties {
 		_Multi("Intensity", Range(0,2.5)) = 0.5  //Could be more than 2.5

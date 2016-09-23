@@ -1,6 +1,6 @@
 ﻿// Solid silhouette of Color that can be set in editor.
 
-Shader ".AnTi/Color/Color Basic" {
+Shader ".AnTi/Color/Basic" {
 	Properties {
 		_Color ("Color", Color) = (1, 0, 0, 1)
 	}

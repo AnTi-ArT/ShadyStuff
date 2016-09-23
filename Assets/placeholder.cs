@@ -1,0 +1,1 @@
+// Apparently at leat one non-shader script is needed to kick of VS Unity integration
