@@ -11,6 +11,7 @@ Shader ".AnTi/Shading/Lambert Basic" {
 		LOD 100
 
 		Pass {
+			Tags{ "LightMode" = "ForwardBase" }
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
