@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: testmat
-  m_Shader: {fileID: 4800000, guid: e99b3893ea58ba34d85108548a056579, type: 3}
+  m_Shader: {fileID: 4800000, guid: 96ee6976b054cbb459eeacf31b6b28e6, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a2758c6ec71fe784e844595649aaea67, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -78,7 +78,7 @@ Material:
     - first:
         name: _RampTex
       second:
-        m_Texture: {fileID: 2800000, guid: 1024ed836e46d42449086716c9749a93, type: 3}
+        m_Texture: {fileID: 2800000, guid: 845c4edf9d245cc44a9049b111a73722, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -125,6 +125,9 @@ Material:
         name: _Scale
       second: 1
     - first:
+        name: _Scaling
+      second: 0.5
+    - first:
         name: _SmoothnessTextureChannel
       second: 0
     - first:
@@ -142,7 +145,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.22663236, g: 0.5907185, b: 0.934, a: 0.659}
+      second: {r: 0.20588237, g: 0.08326126, b: 0.08326126, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
